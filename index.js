@@ -69,19 +69,30 @@ function refactoredViewCart(){
 function total() {
   let finalTotal = 0;
   for (var i = 0; i < cart.length; i++) {
-  } 
-  if (cart.length === 0) {
-    return finalTotal
-  } else if (cart.length === 1) {
-  finalTotal += cart[i]
-  return finalTotal
+    if (cart.length === 0) {
+      return finalTotal
+    } else if (cart.length >= 1) {
+      console.log(Object.values(cart[i]))
+      let price = Object.values(cart[i])[0]
+      finalTotal += price
+    }
   }
+  return finalTotal
 }
 
 function removeFromCart(item) {
-  // write your code here
+  for (var i = 0; i < cart.length; i++) {
+    console.log(cart[i])
+    if (cart[i].hasOwnProperty(item)) {
+      cart.splice(i, 1)
+      return cart
+    }
+  }
+  console.log('That item is not in your cart.')
+  return cart
 }
 
+
 function placeOrder(cardNumber) {
-  // write your code here
+
 }
